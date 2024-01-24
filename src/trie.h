@@ -15,7 +15,7 @@ typedef struct trieNode {
 } trieNode_t;
 
 trieNode_t* getNode();
-void insert(trieNode_t* root, const char* key, task_t* task);
-bool search(trieNode_t* root, const char* key);
+void insert(trieNode_t* root, char* key, task_t* task);
+bool search(trieNode_t* root, char* key);
 
 #endif

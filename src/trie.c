@@ -23,7 +23,7 @@ trieNode_t* getNode() {
  
 // If not present, inserts key into trie
 // If the key is prefix of trie node, just marks leaf node
-void insert(trieNode_t* root, const char* key, task_t* t) {
+void insert(trieNode_t* root, char* key, task_t* t) {
     int level;
     int length = strlen(key);
     int index;
@@ -43,7 +43,7 @@ void insert(trieNode_t* root, const char* key, task_t* t) {
 }
 
 // Returns true if key presents in trie, else false
-bool search(trieNode_t* root, const char *key) {
+bool search(trieNode_t* root, char *key) {
     int level;
     int length = strlen(key);
     int index;

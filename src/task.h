@@ -18,5 +18,6 @@ typedef struct task {
 task_t* createTask();
 void readTask(task_t* t);
 void freeTask(task_t* t);
+void options(trieNode_t* r);
 
 #endif

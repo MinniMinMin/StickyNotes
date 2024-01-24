@@ -2,15 +2,40 @@
 #include "trie.h"
 
 int main() {
-   task_t* t = createTask();
+
+   printf("Hello! What would you like to do?\n");
    
    trieNode_t* root = getNode();
 
-   insert(root, t->Name, t);
+   options(root);
 
-   printf("Does task exist: %s\n", search(root, t->Name) ? "yes" : "no"); // if 1 pritns true, if 0 prints no
+   return 1;
+}
 
-   free(t);
+void options(trieNode_t* r) {
+   printf("c: create task, s: search for task, e: stop program\n");
+   char option[MAXTITLELENGTH];
+   scanf(" %49[^\n]", option);
+   
+   if (strcmp(option, "c") == 0) {
+      task_t* t = createTask();
+      insert(r, t->Name, t); // create task then add to trie
+   }
+   else if (strcmp(option, "s") == 0) {
+      printf("What would you like to search for?\n");
+      char search[MAXTITLELENGTH];
+      scanf(" %49[^\n]", search);
+      printf("%s\n", search(r, search) ? "This exists!" : "This does not exist!")
+   }
+   else if (strcmp(option, "e") == 0) {
+      printf("Exiting!\n");
+      return;
+   }
+   else {
+      printf("ERROR! Don't recognize command");
+      return;
+   }
+
 }
 
 task_t* createTask() {

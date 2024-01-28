@@ -7,12 +7,16 @@ int main() {
    
    trieNode_t* root = getNode();
 
-   options(root);
+   while (1) {
+      if (options(root) == 0) break;
+      // now need to deal with memory issues
+      // and make it so notes are properly saved and not wiped after use!
+   }
 
    return 1;
 }
 
-void options(trieNode_t* r) {
+int options(trieNode_t* r) {
    printf("c: create task, s: search for task, e: stop program\n");
    char option[MAXTITLELENGTH];
    scanf(" %49[^\n]", option);
@@ -23,19 +27,19 @@ void options(trieNode_t* r) {
    }
    else if (strcmp(option, "s") == 0) {
       printf("What would you like to search for?\n");
-      char search[MAXTITLELENGTH];
-      scanf(" %49[^\n]", search);
-      printf("%s\n", search(r, search) ? "This exists!" : "This does not exist!")
+      char lookup[MAXTITLELENGTH];
+      scanf(" %49[^\n]", lookup);
+      printf("%s\n", search(r, lookup) ? "This exists!" : "This does not exist!");
    }
    else if (strcmp(option, "e") == 0) {
       printf("Exiting!\n");
-      return;
+      return 0;
    }
    else {
       printf("ERROR! Don't recognize command");
-      return;
+      return 0;
    }
-
+   return 1;
 }
 
 task_t* createTask() {

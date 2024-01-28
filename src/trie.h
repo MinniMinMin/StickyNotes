@@ -6,7 +6,10 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include "task.h"
+
+// Forward declaration of task_t
+struct task;
+typedef struct task task_t;
 
 typedef struct trieNode {
     struct trieNode* children[ALPHABET_SIZE];
